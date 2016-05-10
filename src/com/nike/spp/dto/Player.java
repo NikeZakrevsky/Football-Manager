@@ -23,25 +23,18 @@ public class Player implements java.io.Serializable {
 	private int number;
 	private int weight;
 	private int hight;
-	private Date birthDate;
-	private String nationality;
-
-	
+	private String teamName;
 
 	public Player() {
 	}
-	
-	public Player(Team team, String name, int number, int weight, int hight, Date birthDate, String nationality) {
+
+	public Player(Team team, String name, int number, int weight, int hight) {
 		this.team = team;
 		this.name = name;
 		this.number = number;
 		this.weight = weight;
 		this.hight = hight;
-		this.birthDate = birthDate;
-		this.nationality = nationality;
 	}
-
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -100,22 +93,14 @@ public class Player implements java.io.Serializable {
 		this.hight = hight;
 	}
 
-	@Column(name = "birthDate")
-	public Date getBirthDate() {
-		return this.birthDate;
+	@Column(name = "teamName")
+	public String getTeamName() {
+		return teamName;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
-
-	@Column(name = "nationality")
-	public String getNationality() {
-		return this.nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
+	
 	
 }

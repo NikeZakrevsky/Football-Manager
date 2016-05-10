@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.nike.spp.dao.DAO;
+import com.nike.spp.dto.Player;
 import com.nike.spp.dto.Team;
 import com.nike.spp.dto.User;
 
@@ -88,9 +89,22 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/saveTeam", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("team") Team team) {
+	public ModelAndView saveTeam(@ModelAttribute("team") Team team) {
 		itemMasterDao.addTeam(team);
 		System.out.println(team.getName());
+		return new ModelAndView("teamAdd");
+	}
+	
+	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+	public ModelAndView saveUser(@ModelAttribute("user") User user) {
+		itemMasterDao.addUser(user);
+		return new ModelAndView("redirect:/index.do");
+	}
+	
+	@RequestMapping(value = "/savePlayer", method = RequestMethod.POST)
+	public ModelAndView savePlayer(Player player) {
+		System.out.println(player.getName() + " " + player.getTeamName());
+		itemMasterDao.savePlayer(player);
 		return new ModelAndView("teamAdd");
 	}
 }

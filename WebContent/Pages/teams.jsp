@@ -101,9 +101,9 @@
                     <p><strong>Название:</strong> ${listValue.name}</p>
 					<p><strong>Тренер</strong> ${listValue.coach}</p>
 					<p><strong>Игроки:</strong></p>
-					<p>Игрок 1</p>
-					<p>Игрок 2</p>
-					<p>Игрок 3</p>
+					<c:forEach var="playerValue" items="${listValue.players}">
+						<p>${playerValue.name}</p>
+					</c:forEach>
 				</div>
             </div>
         </div>

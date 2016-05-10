@@ -89,17 +89,19 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-					<p><b>Имя:</b><br>
-					<input type="text" size="40"></p>
-					<p><b>Номер:</b><br>
-					<input type="text" size="40"></p>
-					<p><b>Рост:</b><br>
-					<input type="text" size="40"></p>
-					<p><b>Вес:</b><br>
-					<input type="text" size="40"></p>
-					<p><b>Команда:</b><br>
-					<input type="text" size="40"></p>
-					<input type="submit" value="Отправить">
+                	<form role="form" action="savePlayer.do" method="post">
+						<p><b>Имя:</b><br>
+						<input type="text" name="name" size="40"></p>
+						<p><b>Номер:</b><br>
+						<input type="text" name="number" size="40"></p>
+						<p><b>Рост:</b><br>
+						<input type="text" name="hight" size="40"></p>
+						<p><b>Вес:</b><br>
+						<input type="text" size="40" name="weight"></p>
+						<p><b>Команда:</b><br>
+						<input type="text" name="teamName" size="40"></p>
+						<input type="submit" value="Отправить">
+					</form>
 				</div>
             </div>
         </div>

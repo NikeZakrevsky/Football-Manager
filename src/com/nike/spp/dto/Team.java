@@ -3,6 +3,7 @@ package com.nike.spp.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -82,7 +83,7 @@ public class Team implements java.io.Serializable {
 		this.coach = coach;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "team", cascade = CascadeType.ALL)
 	public Set<Player> getPlayers() {
 		return players;
 	}
@@ -91,7 +92,7 @@ public class Team implements java.io.Serializable {
 		this.players = players;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "team", cascade = CascadeType.ALL)
 	public Set<Match> getMatch() {
 		return match;
 	}
