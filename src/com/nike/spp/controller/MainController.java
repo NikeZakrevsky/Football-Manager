@@ -3,15 +3,63 @@ package com.nike.spp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.nike.spp.dao.ItemMasterDAO;
+import com.nike.spp.dao.DAO;
 
 @Controller
-public class ProductController {
+public class MainController {
 	
 	@Autowired
-	private ItemMasterDAO itemMasterDao; 
+	private DAO itemMasterDao; 
 	
+	@RequestMapping(value = "/index")
+	public ModelAndView index() {
+		ModelAndView model = new ModelAndView("index");
+		return model;
+	}
+	
+	@RequestMapping(value = "/teams")
+	public ModelAndView team() {
+		ModelAndView model = new ModelAndView("teams");
+		return model;
+	}
+	
+	@RequestMapping(value = "/stadiums")
+	public ModelAndView stadium() {
+		ModelAndView model = new ModelAndView("stadiums");
+		return model;
+	}
+	
+	@RequestMapping(value = "/teamAdd")
+	public ModelAndView teamAdd() {
+		ModelAndView model = new ModelAndView("teamAdd");
+		return model;
+	}
+	
+	@RequestMapping(value = "/matchAdd")
+	public ModelAndView matchAdd() {
+		ModelAndView model = new ModelAndView("matchAdd");
+		return model;
+	}
+	
+	@RequestMapping(value = "/playerAdd")
+	public ModelAndView playerAdd() {
+		ModelAndView model = new ModelAndView("playerAdd");
+		return model;
+	}
+	
+	@RequestMapping(value = "/stadiumAdd")
+	public ModelAndView stadiumAdd() {
+		ModelAndView model = new ModelAndView("stadiumAdd");
+		return model;
+	}
+	
+	@RequestMapping(value = "/matches")
+	public ModelAndView matches() {
+		ModelAndView model = new ModelAndView("matches");
+		return model;
+	}
 	  /*@RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("item") ItemMaster item) {
         System.out.println(item.getItem_name());
@@ -27,10 +75,10 @@ public class ProductController {
   }*/
 	
 	
-	@RequestMapping(value = "/save")
+	/*@RequestMapping(value = "/save")
     public void save() {
-        	itemMasterDao.add();
-  }
+       	itemMasterDao.getUserList();
+	}*/
 	
 	  /*@RequestMapping(value="/list")
 	    public ModelAndView list() {

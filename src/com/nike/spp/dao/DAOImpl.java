@@ -1,6 +1,7 @@
 package com.nike.spp.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,14 +16,28 @@ import com.nike.spp.dto.Tournament;
 import com.nike.spp.dto.User;
 
 @Transactional
-public class ItemMasterDAOImpl implements ItemMasterDAO {
+public class DAOImpl implements DAO {
 
 	private SessionFactory sessionFactory;
 
-	public ItemMasterDAOImpl(SessionFactory sessionFactory) {
+	public DAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
+	public User getUserByName(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		List<User> usersList = (List<User>) session.createQuery("from User").list();
+		session.getTransaction().commit();
+		for (User user : usersList) {
+			if (user.getLogin().equals(name))
+				return user;
+		}
+		return null;
+	}
+
+	
+	
 	public void add() {
 
 		Session session = sessionFactory.getCurrentSession();
