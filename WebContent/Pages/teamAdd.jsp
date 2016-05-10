@@ -89,13 +89,13 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-					<p><b>Название:</b><br>
-					<input type="text" size="40"></p>
-					<p><b>Город:</b><br>
-					<input type="text" size="40"></p>
-					<p><b>Тренер:</b><br>
-					<input type="text" size="40"></p>
-					<input type="submit" value="Отправить">
+        			<form role="form" action="saveTeam.do" method="post">
+						<p><b>Название:</b><br>
+							<input type="text" name="name" size="40"></p>
+						<p><b>Тренер:</b><br>
+							<input type="text" name="coach" size="40"></p>
+						<input type="submit" value="Отправить">
+					</form>
 				</div>
             </div>
         </div>

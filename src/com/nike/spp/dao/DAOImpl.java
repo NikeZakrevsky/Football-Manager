@@ -1,27 +1,43 @@
 package com.nike.spp.dao;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.nike.spp.dto.Match;
-import com.nike.spp.dto.Player;
 import com.nike.spp.dto.Role;
-import com.nike.spp.dto.Stadium;
 import com.nike.spp.dto.Team;
-import com.nike.spp.dto.Tournament;
 import com.nike.spp.dto.User;
 
 @Transactional
 public class DAOImpl implements DAO {
 
 	private SessionFactory sessionFactory;
+	User currentUser;
 
 	public DAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+
+	public Set<Team> getTeams() {
+		return currentUser.getTeams();
+	}
+	
+	public void setCurrentUser(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		currentUser = (User)session.get(User.class, user.getId());
+		System.out.println("Current: " + currentUser);
+	}
+
+	public List<User> getUserList() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		List<User> usersList = (List<User>) session.createQuery("from User").list();
+		session.getTransaction().commit();
+		return usersList;
 	}
 
 	public User getUserByName(String name) {
@@ -30,84 +46,70 @@ public class DAOImpl implements DAO {
 		List<User> usersList = (List<User>) session.createQuery("from User").list();
 		session.getTransaction().commit();
 		for (User user : usersList) {
-			if (user.getLogin().equals(name))
+			if (user.getLogin().equals(name)) {
+				System.out.println(user);
 				return user;
+			}
 		}
 		return null;
 	}
 
-	
-	
-	public void add() {
+	public void addTeam(Team team) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		team.setUser(currentUser);
+		currentUser.getTeams().add(team);
+		session.save(team);
+		session.getTransaction().commit();
+	}
+
+	public void addUser(User user) {
 
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-
-		Role role = new Role("Nikita", "admin");
-		session.save(role);
-
-		User user = new User(role, "login", "password");
+		Role role = (Role) session.get(Role.class, "user");
+		currentUser = user;
 		role.getUsers().add(user);
 		session.save(user);
 
-		Team team = new Team();
-		team.setUser(user);
-		team.setName("team_name");
-		team.setCoach("coach");
-		user.getTeams().add(team);
-
-		Team team1 = new Team();
-		team1.setUser(user);
-		team1.setName("team_name1");
-		team1.setCoach("coach1");
-		user.getTeams().add(team1);
-
-		session.save(team);
-		session.save(team1);
-
-		Player player = new Player();
-		player.setBirthDate(new Date());
-		player.setWeight(90);
-		player.setHight(195);
-		player.setName("player_name");
-		player.setNationality("nationality");
-		player.setNumber(20);
-		player.setTeam(team);
-
-		Player player1 = new Player();
-		player1.setBirthDate(new Date());
-		player1.setWeight(95);
-		player1.setHight(100);
-		player1.setName("player_name2");
-		player1.setNationality("nationality2");
-		player1.setNumber(25);
-		player1.setTeam(team1);
-		team.getPlayers().add(player);
-		session.save(player);
-		session.save(player1);
-
-		Tournament tournament = new Tournament();
-		tournament.setName("tournament_name");
-		tournament.setPrize(20);
-		session.save(tournament);
-
-		Stadium stadium = new Stadium();
-		stadium.setCapacity(25);
-		stadium.setName("stadium_name");
-		session.save(stadium);
-
-		Match match = new Match();
-		match.setScoreFirst(10);
-		match.setScoreSecond(11);
-		match.setTeam(team);
-		match.setTeam1(team1);
-		match.setStadium(stadium);
-		match.setTournament(tournament);
-		tournament.getMatches().add(match);
-		stadium.getMatches().add(match);
-		session.save(match);
-
-		match.setTournament(tournament);
+		/*
+		 * Team team = new Team(); team.setUser(user);
+		 * team.setName("team_name"); team.setCoach("coach");
+		 * user.getTeams().add(team);
+		 * 
+		 * Team team1 = new Team(); team1.setUser(user);
+		 * team1.setName("team_name1"); team1.setCoach("coach1");
+		 * user.getTeams().add(team1);
+		 * 
+		 * session.save(team); session.save(team1);
+		 * 
+		 * Player player = new Player(); player.setBirthDate(new Date());
+		 * player.setWeight(90); player.setHight(195);
+		 * player.setName("player_name"); player.setNationality("nationality");
+		 * player.setNumber(20); player.setTeam(team);
+		 * 
+		 * Player player1 = new Player(); player1.setBirthDate(new Date());
+		 * player1.setWeight(95); player1.setHight(100);
+		 * player1.setName("player_name2");
+		 * player1.setNationality("nationality2"); player1.setNumber(25);
+		 * player1.setTeam(team1); team.getPlayers().add(player);
+		 * session.save(player); session.save(player1);
+		 * 
+		 * Tournament tournament = new Tournament();
+		 * tournament.setName("tournament_name"); tournament.setPrize(20);
+		 * session.save(tournament);
+		 * 
+		 * Stadium stadium = new Stadium(); stadium.setCapacity(25);
+		 * stadium.setName("stadium_name"); session.save(stadium);
+		 * 
+		 * Match match = new Match(); match.setScoreFirst(10);
+		 * match.setScoreSecond(11); match.setTeam(team); match.setTeam1(team1);
+		 * match.setStadium(stadium); match.setTournament(tournament);
+		 * tournament.getMatches().add(match); stadium.getMatches().add(match);
+		 * session.save(match);
+		 * 
+		 * match.setTournament(tournament);
+		 */
 
 		session.getTransaction().commit();
 		System.out.println("Done");

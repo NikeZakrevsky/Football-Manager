@@ -1,4 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +33,7 @@
 </head>
 
 <body>
-
+		
     <div class="brand">Организация Футбольных Матчей</div>
     <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko) <a href="#">Регистрация|</a><a href="#">Вход</a></div>
 
@@ -89,17 +90,16 @@
                 </div>
             </div>
         </div>
-
+	<c:forEach var="listValue" items="${lists}">
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="intro-text text-center">Команда 1</h2>
+                    <h2 class="intro-text text-center">${listValue.name}</h2>
                     <hr>
                     <hr class="visible-xs">
-                    <p><strong>Название:</strong> Команда 1</p>
-					<p><strong>Город:</strong> Город 1</p>
-					<p><strong>Тренер</strong> Тренер 1</p>
+                    <p><strong>Название:</strong> ${listValue.name}</p>
+					<p><strong>Тренер</strong> ${listValue.coach}</p>
 					<p><strong>Игроки:</strong></p>
 					<p>Игрок 1</p>
 					<p>Игрок 2</p>
@@ -107,27 +107,8 @@
 				</div>
             </div>
         </div>
-		
-		<div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Команда 2</h2>
-                    <hr>
-                    <hr class="visible-xs">
-                    <p><strong>Название:</strong> Команда 2</p>
-					<p><strong>Город:</strong> Город 2</p>
-					<p><strong>Тренер</strong> Тренер 2</p>
-					<p><strong>Игроки:</strong></p>
-					<p>Игрок 4</p>
-					<p>Игрок 5</p>
-					<p>Игрок 6</p>
-				</div>
-            </div>
-        </div>
-
-    <!-- /.container -->
-
+	</c:forEach>
+	
     <footer>
         <div class="container">
             <div class="row">

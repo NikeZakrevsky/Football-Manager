@@ -46,11 +46,11 @@ public class Team implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "team_id", unique = true, nullable = false)
-	public Integer getTeam_id() {
+	public Integer getId() {
 		return team_id;
 	}
 
-	public void setTeam_id(Integer team_id) {
+	public void setId(Integer team_id) {
 		this.team_id = team_id;
 	}
 
