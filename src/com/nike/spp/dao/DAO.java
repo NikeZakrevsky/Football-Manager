@@ -22,4 +22,6 @@ public interface DAO {
 	public List<Team> getTeams();
 	
 	public void savePlayer(Player player);
+	
+	public Set<Team> getCurrentTeamsList();
 }

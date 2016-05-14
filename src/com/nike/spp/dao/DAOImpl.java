@@ -28,6 +28,7 @@ public class DAOImpl implements DAO {
 		session.beginTransaction();
 		Set<Team> list = (Set<Team>) currentUser.getTeams();
 		for (Team teamName1 : list) {
+			System.out.println(teamName1.getName() + " " + player.getTeamName());
 			if (teamName1.getName().equals(player.getTeamName())) {
 				player.setTeam(teamName1);
 				teamName1.getPlayers().add(player);
@@ -53,6 +54,10 @@ public class DAOImpl implements DAO {
 		System.out.println("Current: " + currentUser);
 	}
 
+	public Set<Team> getCurrentTeamsList() {
+		return currentUser.getTeams();
+	}
+	
 	public List<User> getUserList() {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();

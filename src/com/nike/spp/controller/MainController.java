@@ -1,12 +1,15 @@
 package com.nike.spp.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.nike.spp.dao.DAO;
 import com.nike.spp.dto.Player;
 import com.nike.spp.dto.Team;
@@ -45,9 +48,6 @@ public class MainController {
 	@RequestMapping(value = "/teams")
 	public ModelAndView team() {
 		ModelAndView model = new ModelAndView("teams");
-		for (Team team : itemMasterDao.getTeams()) {
-			System.out.println(team.getName());
-		}
 		model.addObject("lists", itemMasterDao.getTeams());
 		return model;
 	}
@@ -55,12 +55,17 @@ public class MainController {
 	@RequestMapping(value = "/stadiums")
 	public ModelAndView stadium() {
 		ModelAndView model = new ModelAndView("stadiums");
+
 		return model;
 	}
 
 	@RequestMapping(value = "/teamAdd")
 	public ModelAndView teamAdd() {
 		ModelAndView model = new ModelAndView("teamAdd");
+		for (Team team : itemMasterDao.getTeams()) {
+			System.out.println(team.getName());
+		}
+		model.addObject(itemMasterDao.getTeams());
 		return model;
 	}
 
@@ -73,6 +78,10 @@ public class MainController {
 	@RequestMapping(value = "/playerAdd")
 	public ModelAndView playerAdd() {
 		ModelAndView model = new ModelAndView("playerAdd");
+		for (Team team : itemMasterDao.getTeams()) {
+			System.out.println(team.getName());
+		}
+		model.addObject("lists", itemMasterDao.getCurrentTeamsList());
 		return model;
 	}
 
@@ -94,16 +103,15 @@ public class MainController {
 		System.out.println(team.getName());
 		return new ModelAndView("teamAdd");
 	}
-	
+
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute("user") User user) {
 		itemMasterDao.addUser(user);
 		return new ModelAndView("redirect:/index.do");
 	}
-	
+
 	@RequestMapping(value = "/savePlayer", method = RequestMethod.POST)
-	public ModelAndView savePlayer(Player player) {
-		System.out.println(player.getName() + " " + player.getTeamName());
+	public ModelAndView savePlayer(@ModelAttribute("employee") Player player, BindingResult result) {
 		itemMasterDao.savePlayer(player);
 		return new ModelAndView("teamAdd");
 	}
