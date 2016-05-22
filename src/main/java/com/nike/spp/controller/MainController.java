@@ -2,6 +2,9 @@ package com.nike.spp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -34,9 +37,37 @@ public class MainController {
 		return new ModelAndView("regLogPage");
 	}
 
+	@RequestMapping(value = "pdf.do", method = RequestMethod.GET)
+	ModelAndView generatePdf(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("pdfView", "command", itemMasterDao.getTeams());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "csv.do", method = RequestMethod.GET)
+	ModelAndView generateCsv(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("csvView", "csvTeams", itemMasterDao.getTeams());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "excel.do", method = RequestMethod.GET)
+	ModelAndView generateExcel(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("excelView", "teams", itemMasterDao.getTeams());
+		return modelAndView;
+	}
+
 	@RequestMapping(value = "/index")
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView("index");
+		return model;
+	}
+
+	@RequestMapping(value = "/profile")
+	public ModelAndView profile() {
+		ModelAndView model = new ModelAndView("profile");
+		model.addObject("lists", itemMasterDao.getCurrentTeamsList());
 		return model;
 	}
 
@@ -50,7 +81,6 @@ public class MainController {
 	public ModelAndView team() {
 		ModelAndView model = new ModelAndView("teams");
 		model.addObject("lists", itemMasterDao.getTeams());
-		model.addObject("listsCurrent", itemMasterDao.getCurrentTeamsList());
 		return model;
 	}
 
@@ -99,7 +129,10 @@ public class MainController {
 	@RequestMapping(value = "/matches")
 	public ModelAndView matches() {
 		ModelAndView model = new ModelAndView("matches");
-		model.addObject("lists",itemMasterDao.getMatches());
+		model.addObject("lists", itemMasterDao.getMatches());
+		for (Match match : itemMasterDao.getMatches()) {
+			System.out.println(match.getTeam1Name());
+		}
 		return model;
 	}
 

@@ -57,7 +57,12 @@
 				</div>
 			</div>
 		</div>
-
+		<a href="pdf.do">Generate pdf</a>
+		<br>
+		<a href="csv.do">Generate csv</a>
+		<br>
+		<a href="excel.do">Generate excel</a>
+		<br>
 		<c:forEach var="listValue" items="${lists}">
 			<div class="row">
 				<div class="box">

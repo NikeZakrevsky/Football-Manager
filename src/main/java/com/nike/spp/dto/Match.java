@@ -101,7 +101,7 @@ public class Match implements java.io.Serializable {
 		this.stadium = stadium;
 	}
 
-	@Transient
+	@Column(name = "team1Name")
 	public String getTeam1Name() {
 		return team1Name;
 	}
@@ -110,7 +110,7 @@ public class Match implements java.io.Serializable {
 		this.team1Name = team1Name;
 	}
 	
-	@Transient
+	@Column(name = "team2Name")
 	public String getTeam2Name() {
 		return team2Name;
 	}
@@ -119,7 +119,7 @@ public class Match implements java.io.Serializable {
 		this.team2Name = team2Name;
 	}
 
-	@Transient
+	@Column(name = "stadiumName")
 	public String getStadiumName() {
 		return stadiumName;
 	}

@@ -19,6 +19,7 @@ public class Stadium implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private int stadium_id;
 	private String name;
+	private String town;
 	private int capacity;
 	private Set<Match> matches = new HashSet<Match>(0);
 
@@ -65,6 +66,15 @@ public class Stadium implements java.io.Serializable {
 
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+
+	@Column(name = "town")
+	public String getTown() {
+		return town;
+	}
+
+	public void setTown(String town) {
+		this.town = town;
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "stadium")

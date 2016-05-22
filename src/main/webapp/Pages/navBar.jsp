@@ -1,7 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
 <div class="brand">Организация Футбольных Матчей</div>
-    <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko) <a href="#">Регистрация|</a><a href="#">Вход</a></div>
+    <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko) <a href="profile.do">My profile</a>></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -21,16 +21,19 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.do">Главная</a>
+                        <a style="padding: 35px" href="index.do">Главная</a>
                     </li>
                     <li>
-                        <a href="teams.do">Команды</a>
+                        <a style="padding: 35px"href="teams.do">Команды</a>
                     </li>
                     <li>
-                        <a href="stadiums.do">Стадионы</a>
+                        <a style="padding: 35px" href="stadiums.do">Стадионы</a>
                     </li>
 					<li>
-                        <a href="matches.do">Матчи</a>
+                        <a style="padding: 35px" href="matches.do">Матчи</a>
+                    </li>
+                    <li>
+                        <a style="padding: 35px" href="profile.do">Мои команды</a>
                     </li>
                 </ul>
             </div>
