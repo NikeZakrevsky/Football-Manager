@@ -37,24 +37,66 @@ public class MainController {
 		return new ModelAndView("regLogPage");
 	}
 
-	@RequestMapping(value = "pdf.do", method = RequestMethod.GET)
+	@RequestMapping(value = "teams.pdf", method = RequestMethod.GET)
 	ModelAndView generatePdf(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("Calling generatePdf()...");
 		ModelAndView modelAndView = new ModelAndView("pdfView", "command", itemMasterDao.getTeams());
 		return modelAndView;
 	}
-	
-	@RequestMapping(value = "csv.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "teams.csv", method = RequestMethod.GET)
 	ModelAndView generateCsv(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("Calling generatePdf()...");
 		ModelAndView modelAndView = new ModelAndView("csvView", "csvTeams", itemMasterDao.getTeams());
 		return modelAndView;
 	}
-	
-	@RequestMapping(value = "excel.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "teams.xls", method = RequestMethod.GET)
 	ModelAndView generateExcel(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("Calling generatePdf()...");
 		ModelAndView modelAndView = new ModelAndView("excelView", "teams", itemMasterDao.getTeams());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "stadiums.pdf", method = RequestMethod.GET)
+	ModelAndView generatePdfStadium(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("pdfView", "stadiums", itemMasterDao.getStadiums());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "stadiums.csv", method = RequestMethod.GET)
+	ModelAndView generateCsvStadium(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("csvView", "stadiums", itemMasterDao.getStadiums());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "stadiums.xls", method = RequestMethod.GET)
+	ModelAndView generateExcelStadium(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("excelView", "stadiums", itemMasterDao.getStadiums());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "match.pdf", method = RequestMethod.GET)
+	ModelAndView generatePdfMatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("matchpdfView", "command", itemMasterDao.getMatches());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "match.csv", method = RequestMethod.GET)
+	ModelAndView generateCsvMatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("matchcsvView", "matches", itemMasterDao.getMatches());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "match.xls", method = RequestMethod.GET)
+	ModelAndView generateExcelMatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Calling generatePdf()...");
+		ModelAndView modelAndView = new ModelAndView("matchexcelView", "matches", itemMasterDao.getMatches());
 		return modelAndView;
 	}
 

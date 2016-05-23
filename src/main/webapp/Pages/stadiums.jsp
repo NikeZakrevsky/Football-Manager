@@ -41,7 +41,15 @@
 
 <body ng-app="">
 	<div ng-include="'Pages/navBar.jsp'"></div>
-
+	<div class="row">
+		<div class="box">
+			<div class="col-lg-12 text-center">
+				<a href="stadiums.pdf">Generate pdf</a> | 
+				<a href="stadiums.csv">Generate csv</a> | 
+				<a href="stadiums.xls">Generate xls</a>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<c:forEach var="listValue" items="${lists}">
 			<div class="row">

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 import com.nike.spp.dto.Team;
 
+@SuppressWarnings("deprecation")
 public class ExcelView extends AbstractExcelView {
  @Override
  protected void buildExcelDocument(Map model, HSSFWorkbook workbook,

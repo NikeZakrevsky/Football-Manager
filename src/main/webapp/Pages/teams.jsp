@@ -11,7 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <title>Организация Футбольных Матчей</title>
 
 <!-- Bootstrap Core CSS -->
@@ -53,16 +54,12 @@
 					<h2 class="brand-before">
 						<a href="playerAdd.do">Добавить нового игрока</a>
 					</h2>
-					<hr class="tagline-divider">
+					<a href="teams.pdf">Generate pdf</a> |
+					<a href="teams.csv">Generate csv</a> |
+					<a href="teams.xls">Generate excel</a>
 				</div>
 			</div>
 		</div>
-		<a href="pdf.do">Generate pdf</a>
-		<br>
-		<a href="csv.do">Generate csv</a>
-		<br>
-		<a href="excel.do">Generate excel</a>
-		<br>
 		<c:forEach var="listValue" items="${lists}">
 			<div class="row">
 				<div class="box">
@@ -87,30 +84,30 @@
 				</div>
 			</div>
 		</c:forEach>
-
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center">
-						<p>Copyright &copy; Yakhovsky Team</p>
-					</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<p>Copyright &copy; Yakhovsky Team</p>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</footer>
 
-		<!-- jQuery Version 1.11.0 -->
-		<script src="resources/js/jquery-1.11.0.js"></script>
+	<!-- jQuery Version 1.11.0 -->
+	<script src="resources/js/jquery-1.11.0.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="resources/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="resources/js/bootstrap.min.js"></script>
 
-		<!-- Script to Activate the Carousel -->
-		<script>
-			$('.carousel').carousel({
-				interval : 5000
-			//changes the speed
-			})
-		</script>
+	<!-- Script to Activate the Carousel -->
+	<script>
+		$('.carousel').carousel({
+			interval : 5000
+		//changes the speed
+		})
+	</script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@ public class PDFView extends AbstractPdfView {
 			s += "Team : " + team.getName() + "\r\n";
 		}
 		Paragraph header = new Paragraph(
-				new Chunk("Generate Pdf USing Spring Mvc", FontFactory.getFont(FontFactory.HELVETICA, 30)));
+				new Chunk("Generate Pdf", FontFactory.getFont(FontFactory.HELVETICA, 30)));
 		Paragraph by = new Paragraph(new Chunk(s, FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
 		document.add(header);

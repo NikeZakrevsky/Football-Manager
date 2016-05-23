@@ -40,45 +40,47 @@
 
 <body ng-app="">
 	<div ng-include="'Pages/navBar.jsp'"></div>
-
-
-	<div class="row">
-		<div class="box">
-			<div class="col-lg-12 text-center">
-				<hr class="tagline-divider">
-				<h2 class="brand-before">
-					<a href="matchAdd.do">Добавить новый матч</a>
-				</h2>
-				<hr class="tagline-divider">
-			</div>
-		</div>
-	</div>
-	<c:forEach var="listValue" items="${lists}">
+	<div class="container">
 		<div class="row">
 			<div class="box">
-				<div class="col-lg-12">
-
-					<hr>
-					<h2 class="intro-text text-center">${listValue.team1Name}-
-						${listValue.team2Name}</h2>
-					<hr>
-					<hr class="visible-xs">
-					<p>
-						<strong>Название:</strong> ${listValue.team1Name} -
-						${listValue.team2Name}
-					</p>
-					<p>
-						<strong>Счет:</strong> ${listValue.scoreFirst} -
-						${listValue.scoreSecond}
-					</p>
-					<p>
-						<strong>Стадион:</strong> ${listValue.stadiumName}
-					</p>
+				<div class="col-lg-12 text-center">
+					<hr class="tagline-divider">
+					<h2 class="brand-before">
+						<a href="matchAdd.do">Добавить новый матч</a>
+					</h2>
+					<hr class="tagline-divider">
+					<a href="match.pdf">Generate PDF</a>
+					<a href="match.csv">Generate CSV</a>
+					<a href="match.xls">Generate XLS</a>
 				</div>
 			</div>
 		</div>
-	</c:forEach>
+		<c:forEach var="listValue" items="${lists}">
+			<div class="row">
+				<div class="box">
+					<div class="col-lg-12">
 
+						<hr>
+						<h2 class="intro-text text-center">${listValue.team1Name}-
+							${listValue.team2Name}</h2>
+						<hr>
+						<hr class="visible-xs">
+						<p>
+							<strong>Название:</strong> ${listValue.team1Name} -
+							${listValue.team2Name}
+						</p>
+						<p>
+							<strong>Счет:</strong> ${listValue.scoreFirst} -
+							${listValue.scoreSecond}
+						</p>
+						<p>
+							<strong>Стадион:</strong> ${listValue.stadiumName}
+						</p>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 	<footer>
 		<div class="container">
 			<div class="row">

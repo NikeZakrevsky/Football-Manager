@@ -1,7 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
 <div class="brand">Организация Футбольных Матчей</div>
-    <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko) <a href="profile.do">My profile</a>></div>
+    <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko)</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">

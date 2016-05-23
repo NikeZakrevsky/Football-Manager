@@ -26,7 +26,7 @@ public abstract class AbstractCsvView extends AbstractView {
 
 	protected void prepareResponse(HttpServletRequest request, HttpServletResponse response) {
 		String headerKey = "Content-Disposition";
-		String headerValue = String.format("attachment; filename=\"%s\"", fileName);
+		String headerValue = String.format("attachment; filename=\"%s\"", "csv");
 		response.setContentType("text/csv");
 		response.setHeader(headerKey, headerValue);
 	}
