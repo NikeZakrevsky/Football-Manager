@@ -5,19 +5,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nike.spp.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nike.spp.dao.DAO;
-import com.nike.spp.dto.Match;
-import com.nike.spp.dto.Player;
-import com.nike.spp.dto.Team;
-import com.nike.spp.dto.User;
 
 @Controller
 public class MainController {
@@ -25,16 +23,26 @@ public class MainController {
 	@Autowired
 	private DAO itemMasterDao;
 
+	@RequestMapping("/remove/{id}")
+	public String removePerson(@PathVariable("id") int id){
+		itemMasterDao.removeStadium(id);
+		return "redirect:/adminPage";
+	}
+
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public ModelAndView signIn(@ModelAttribute("user") User user) {
+		User currentUser = null;
 		List<User> userList = itemMasterDao.getUserList();
 		for (User userItem : userList) {
+			System.out.println(userItem.getLogin());
 			if (userItem.getLogin().equals(user.getLogin()) && userItem.getPassword().equals(user.getPassword())) {
 				itemMasterDao.setCurrentUser(userItem);
-				return new ModelAndView("redirect:/index.do");
+				if (itemMasterDao.getRole(userItem).equals("user"))
+					return new ModelAndView("redirect:/index.do");
+				else return new ModelAndView("redirect:/adminPage");
 			}
 		}
-		return new ModelAndView("regLogPage");
+		return new ModelAndView("login");
 	}
 
 	@RequestMapping(value = "teams.pdf", method = RequestMethod.GET)
@@ -104,6 +112,16 @@ public class MainController {
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView("index");
 		return model;
+	}
+
+	@RequestMapping(value = "/adminPage")
+	public ModelAndView adminPage() {
+		if(itemMasterDao.getCurrentUser().getRole().getName().equals("admin")) {
+			ModelAndView model = new ModelAndView("adminPage");
+			model.addObject("stadiums", itemMasterDao.getStadiums());
+			return model;
+		}
+		else { return new ModelAndView("index"); }
 	}
 
 	@RequestMapping(value = "/profile")
@@ -176,6 +194,13 @@ public class MainController {
 			System.out.println(match.getTeam1Name());
 		}
 		return model;
+	}
+
+	@RequestMapping(value = "/saveStadiumAdmin", method = RequestMethod.POST)
+	public ModelAndView saveTeamAdmin(@ModelAttribute("stadium") Stadium stadium) {
+		itemMasterDao.addStadium(stadium);
+		System.out.println(stadium.getName());
+		return new ModelAndView("redirect:/adminPage");
 	}
 
 	@RequestMapping(value = "/saveTeam", method = RequestMethod.POST)

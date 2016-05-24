@@ -32,4 +32,12 @@ public interface DAO {
 	public List<Stadium> getStadiums();
 	
 	public List<Match> getMatches();
+
+	public void removeStadium(int id);
+
+	public User getCurrentUser();
+
+	public String getRole(User userItem);
+
+	public void addStadium(Stadium stadium);
 }

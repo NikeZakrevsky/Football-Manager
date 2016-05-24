@@ -32,6 +32,16 @@ public class DAOImpl implements DAO {
 		return matches;
 	}
 
+	@Override
+	public void removeStadium(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Stadium stadium = (Stadium)session.load(Stadium.class,new Integer(id));
+		if(stadium != null)
+			session.delete(stadium);
+		session.getTransaction().commit();
+	}
+
 	public void savePlayer(Player player) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -141,4 +151,26 @@ public class DAOImpl implements DAO {
 		session.getTransaction().commit();
 	}
 
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	@Override
+	public String getRole(User userItem) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		System.out.println("Role: " + userItem.getRole().getRole_id());
+		Role role = (Role)session.load(Role.class,new Integer(userItem.getRole().getRole_id()));
+		System.out.println(role);
+		session.getTransaction().commit();
+		return role.getName();
+	}
+
+	@Override
+	public void addStadium(Stadium stadium) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.save(stadium);
+		session.getTransaction().commit();
+	}
 }
