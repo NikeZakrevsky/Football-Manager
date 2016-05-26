@@ -29,6 +29,12 @@ public class MainController {
 		return "redirect:/adminPage";
 	}
 
+	@RequestMapping("/removeUser/{id}")
+	public String removeUser(@PathVariable("id") int id){
+		itemMasterDao.removeUser(id);
+		return "redirect:/adminPage";
+	}
+
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public ModelAndView signIn(@ModelAttribute("user") User user) {
 		User currentUser = null;
@@ -119,6 +125,7 @@ public class MainController {
 		if(itemMasterDao.getCurrentUser().getRole().getName().equals("admin")) {
 			ModelAndView model = new ModelAndView("adminPage");
 			model.addObject("stadiums", itemMasterDao.getStadiums());
+			model.addObject("users", itemMasterDao.getUserList());
 			return model;
 		}
 		else { return new ModelAndView("index"); }

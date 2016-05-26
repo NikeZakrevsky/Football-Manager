@@ -49,6 +49,33 @@
           </form>
           <table class="tg">
             <tr>
+              <th width="80">User ID</th>
+              <th width="120">Username</th>
+              <th width="120">Password</th>
+              <th width="120">Role</th>
+              <th width="60">Edit</th>
+              <th width="60">Delete</th>
+            </tr>
+            <c:forEach items="${users}" var="user">
+              <tr>
+                <td>${user.id}</td>
+                <td>${user.login}</td>
+                <td>${user.password}</td>
+                <td><a href="<c:url value='/removeUser/${user.id}' />" >Delete</a></td>
+              </tr>
+            </c:forEach>
+          </table>
+          <form role="form" action="saveStadiumAdmin" method="post">
+            <p><b>Name:</b><br>
+              <input type="text" name="name" size="40"></p>
+            <p><b>Town:</b><br>
+              <input type="text" name="town" size="40"></p>
+            <p><b>Capacity:</b><br>
+              <input type="text" name="capacity" size="40"></p>
+            <input type="submit" value="Отправить">
+          </form>
+          <table class="tg">
+            <tr>
               <th width="80">Stadium ID</th>
               <th width="120">Stadium Name</th>
               <th width="120">Stadium Town</th>

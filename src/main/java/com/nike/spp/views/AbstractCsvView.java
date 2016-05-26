@@ -26,7 +26,7 @@ public abstract class AbstractCsvView extends AbstractView {
 
 	protected void prepareResponse(HttpServletRequest request, HttpServletResponse response) {
 		String headerKey = "Content-Disposition";
-		String headerValue = String.format("attachment; filename=\"%s\"", "csv");
+		String headerValue = String.format("attachment; filename=\"%s\"", "csv.csv");
 		response.setContentType("text/csv");
 		response.setHeader(headerKey, headerValue);
 	}
@@ -35,7 +35,7 @@ public abstract class AbstractCsvView extends AbstractView {
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
+		ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
 
 		buildCsvDocument(csvWriter, model);
 		csvWriter.close();

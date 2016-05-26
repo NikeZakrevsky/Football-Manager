@@ -173,4 +173,14 @@ public class DAOImpl implements DAO {
 		session.save(stadium);
 		session.getTransaction().commit();
 	}
+
+	@Override
+	public void removeUser(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		User user = (User)session.load(User.class,new Integer(id));
+		if(user != null)
+			session.delete(user);
+		session.getTransaction().commit();
+	}
 }

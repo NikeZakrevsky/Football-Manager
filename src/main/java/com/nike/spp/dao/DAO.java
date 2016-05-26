@@ -40,4 +40,6 @@ public interface DAO {
 	public String getRole(User userItem);
 
 	public void addStadium(Stadium stadium);
+
+	public void removeUser(int id);
 }
