@@ -55,33 +55,35 @@
 		<div class="row">
 			<div class="box">
 				<div class="col-lg-12">
-					<form role="form" action="saveMatch.do" method="post">
+					<form role="form" action="matchAdd" method="post">
 						<p>
-							<b>Команда 1:</b><br> <select name="team1Name">
-								<c:forEach var="listValue" items="${lists}">
-									<option value="${listValue.name}">${listValue.name}</option>
+							<b>Команда 1:</b><br>
+							<select name="match.team1Name">
+								<c:forEach var="team" items="${teams}">
+									<option value="${team.name}">${team.name}</option>
 								</c:forEach>
 							</select>
 						<p>
-							<b>Команда 2:</b><br> <select name="team2Name">
-								<c:forEach var="listValue" items="${lists}">
-									<option value="${listValue.name}">${listValue.name}</option>
-								</c:forEach>
-							</select>
-						</p>
-						<p>
-							<b>Стадион:</b><br> 
-							<select name="stadiumName">
-								<c:forEach var="listValue1" items="${lists1}">
-									<option value="${listValue1.name}">${listValue1.name}</option>
+							<b>Команда 2:</b><br>
+							<select name="match.team2Name">
+								<c:forEach var="team" items="${teams}">
+									<option value="${team.name}">${team.name}</option>
 								</c:forEach>
 							</select>
 						</p>
 						<p>
-							<b>Счет 1:</b><br> <input name="scoreFirst" type="text" size="40">
+							<b>Стадион:</b><br>
+							<select name="match.stadiumName">
+								<c:forEach var="stadium" items="${stadiums}">
+									<option value="${stadium.name}">${stadium.name}</option>
+								</c:forEach>
+							</select>
 						</p>
 						<p>
-							<b>Счет 2:</b><br> <input name="scoreSecond" type="text" size="40">
+							<b>Счет 1:</b><br> <input name="match.scoreFirst" type="text" size="40">
+						</p>
+						<p>
+							<b>Счет 2:</b><br> <input name="match.scoreSecond" type="text" size="40">
 						</p>
 						<input type="submit" value="Отправить">
 					</form>

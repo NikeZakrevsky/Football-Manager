@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +47,7 @@
 				<div class="col-lg-12 text-center">
 					<hr class="tagline-divider">
 					<h2 class="brand-before">
-						<a href="matchAdd.do">Добавить новый матч</a>
+						<a href="matchAddPage">Добавить новый матч</a>
 					</h2>
 					<hr class="tagline-divider">
 					<a href="match.pdf">Generate PDF</a>
@@ -55,31 +56,31 @@
 				</div>
 			</div>
 		</div>
-		<c:forEach var="listValue" items="${lists}">
+		<s:iterator value="matches" var="match">
 			<div class="row">
 				<div class="box">
 					<div class="col-lg-12">
 
 						<hr>
-						<h2 class="intro-text text-center">${listValue.team1Name}-
-							${listValue.team2Name}</h2>
+						<h2 class="intro-text text-center"><s:property value="#match.team1Name"/>-
+							<s:property value="#match.team2Name"/></h2>
 						<hr>
 						<hr class="visible-xs">
 						<p>
-							<strong>Название:</strong> ${listValue.team1Name} -
-							${listValue.team2Name}
+							<strong>Название:</strong> <s:property value="#match.team1Name"/>-
+							<s:property value="#match.team2Name"/>
 						</p>
 						<p>
-							<strong>Счет:</strong> ${listValue.scoreFirst} -
-							${listValue.scoreSecond}
+							<strong>Счет:</strong><s:property value="#match.scoreFirst"/>-
+							<s:property value="#match.scoreSecond"/>
 						</p>
 						<p>
-							<strong>Стадион:</strong> ${listValue.stadiumName}
+							<strong>Стадион:</strong> <s:property value="#match.stadiumName"/>
 						</p>
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+		</s:iterator>
 	</div>
 	<footer>
 		<div class="container">

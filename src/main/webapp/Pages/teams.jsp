@@ -66,7 +66,7 @@
 				<div class="box">
 					<div class="col-lg-12">
 						<hr>
-						<h2 class="intro-text text-center">${listValue.name}</h2>
+						<h2 class="intro-text text-center"><s:property value="#team.name"/></h2>
 						<hr>
 						<hr class="visible-xs">
 						<p>
@@ -78,7 +78,7 @@
 						<p>
 							<strong>Игроки:</strong>
 						</p>
-						<s:iterator value="teams.players" var="player">
+						<s:iterator value="#team.players" var="player">
 							<s:property value="#player.name"/>
 						</s:iterator>
 					</div>

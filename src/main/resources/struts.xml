@@ -40,5 +40,17 @@
                         <result name="success">Pages/playerAdd.jsp</result>
                         <result name="input">Pages/playerAdd.jsp</result>
                 </action>
+
+                <!--Matches controller -->
+                <action name="matches" class="com.nike.spp.controller.MatchListPage">
+                        <result name="success">Pages/matches.jsp</result>
+                </action>
+                <action name="matchAddPage" class="com.nike.spp.controller.MatchAddPage">
+                        <result name="success">Pages/matchAdd.jsp</result>
+                </action>
+                <action name="matchAdd" class="com.nike.spp.controller.MatchAddAction">
+                        <result name="success">Pages/matches.jsp</result>
+                </action>
+
         </package>
 </struts>

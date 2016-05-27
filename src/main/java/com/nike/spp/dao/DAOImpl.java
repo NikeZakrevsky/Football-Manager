@@ -146,8 +146,10 @@ public class DAOImpl implements DAO {
 		}
 
 		for (Stadium stadium1 : stadiums) {
-			if (match.getStadiumName().equals(stadium1.getName()))
+			if (match.getStadiumName().equals(stadium1.getName())) {
+				System.out.println(stadium1.getName());
 				match.setStadium(stadium1);
+			}
 		}
 		session.save(match);
 		session.getTransaction().commit();
