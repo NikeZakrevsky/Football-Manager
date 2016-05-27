@@ -1,5 +1,6 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,11 +49,11 @@
 				<div class="col-lg-12 text-center">
 					<hr class="tagline-divider">
 					<h2 class="brand-before">
-						<a href="teamAdd.do">Добавить новую команду</a>
+						<a href="teamAddPage">Добавить новую команду</a>
 					</h2>
 					<hr class="tagline-divider">
 					<h2 class="brand-before">
-						<a href="playerAdd.do">Добавить нового игрока</a>
+						<a href="playerAddPage">Добавить нового игрока</a>
 					</h2>
 					<a href="teams.pdf">Generate pdf</a> |
 					<a href="teams.csv">Generate csv</a> |
@@ -60,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<c:forEach var="listValue" items="${lists}">
+		<s:iterator value="teams" var="team">
 			<div class="row">
 				<div class="box">
 					<div class="col-lg-12">
@@ -69,21 +70,21 @@
 						<hr>
 						<hr class="visible-xs">
 						<p>
-							<strong>Название:</strong> ${listValue.name}
+							<strong>Название:</strong> <s:property value="#team.name"/>
 						</p>
 						<p>
-							<strong>Тренер</strong> ${listValue.coach}
+							<strong>Тренер</strong> <s:property value="#team.coach"/>
 						</p>
 						<p>
 							<strong>Игроки:</strong>
 						</p>
-						<c:forEach var="playerValue" items="${listValue.players}">
-							<p>${playerValue.name}</p>
-						</c:forEach>
+						<s:iterator value="teams.players" var="player">
+							<s:property value="#player.name"/>
+						</s:iterator>
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+		</s:iterator>
 	</div>
 	<footer>
 		<div class="container">

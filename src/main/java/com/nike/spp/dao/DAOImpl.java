@@ -43,9 +43,9 @@ public class DAOImpl implements DAO {
 	}
 
 	public void savePlayer(Player player) {
-		Session session = sessionFactory.getCurrentSession();
-		session.beginTransaction();
-		Set<Team> list = (Set<Team>) currentUser.getTeams();
+
+		System.out.println(player.getTeamName());
+		List<Team> list = (List<Team>) getTeams();
 		for (Team teamName1 : list) {
 			System.out.println(teamName1.getName() + " " + player.getTeamName());
 			if (teamName1.getName().equals(player.getTeamName())) {
@@ -54,6 +54,8 @@ public class DAOImpl implements DAO {
 				System.out.println("yes");
 			}
 		}
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
 		session.save(player);
 		session.getTransaction().commit();
 	}

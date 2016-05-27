@@ -109,15 +109,6 @@ public class PlayerTest {
         assertEquals(65, newWeight);
     }
 
-    @Test
-    public void getTeamName() throws Exception {
-        Player zico = new Player();
-        String teamName="Torpedo",newName;
-        zico.setTeamName(teamName);
-        newName = zico.getTeamName();
-        System.out.println(newName);
-        assertTrue(("Torpedo").equals(newName));
-    }
 
     @Test
     public void setHight() throws Exception {
@@ -126,15 +117,6 @@ public class PlayerTest {
         ronaldo.setHight(hight);
         newHight=ronaldo.getHight();
         assertEquals(175, newHight);
-    }
-
-    @Test
-    public void setTeamName() throws Exception {
-        Player beckham=new Player();
-        String teamName="Manchester",newName;
-        beckham.setTeamName(teamName);
-        newName = beckham.getTeamName();
-        assertEquals("Manchester",newName);
     }
 
 	@Test

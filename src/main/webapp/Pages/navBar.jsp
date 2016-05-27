@@ -21,19 +21,19 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a style="padding: 35px" href="index.do">Главная</a>
+                        <a style="padding: 35px" href="index">Главная</a>
                     </li>
                     <li>
-                        <a style="padding: 35px"href="teams.do">Команды</a>
+                        <a style="padding: 35px"href="teams">Команды</a>
                     </li>
                     <li>
-                        <a style="padding: 35px" href="stadiums.do">Стадионы</a>
+                        <a style="padding: 35px" href="stadiums">Стадионы</a>
                     </li>
 					<li>
-                        <a style="padding: 35px" href="matches.do">Матчи</a>
+                        <a style="padding: 35px" href="matches">Матчи</a>
                     </li>
                     <li>
-                        <a style="padding: 35px" href="profile.do">Мои команды</a>
+                        <a style="padding: 35px" href="profile">Мои команды</a>
                     </li>
                 </ul>
             </div>

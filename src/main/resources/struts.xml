@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+        <constant name="struts.devMode" value="true" />
+
+
+        <package name="default" extends="struts-default" namespace="/">
+
+                <!--Users controller -->
+
+                <action name="">
+                        <result>Pages/regLogPage.jsp</result>
+                </action>
+
+                <action name="signIn" class="com.nike.spp.controller.SignInAction" >
+                        <result name="success">Pages/index.jsp</result>
+                </action>
+
+                <!--Teams controller -->
+
+                <action name="teams" class="com.nike.spp.controller.TeamListAction" >
+                        <result name="success">Pages/teams.jsp</result>
+                </action>
+                <action name="teamAdd" class="com.nike.spp.controller.AddTeamAction" >
+                        <result name="success">Pages/teamAdd.jsp</result>
+                </action>
+                <action name="teamAddPage">
+                        <result name="success">Pages/teamAdd.jsp</result>
+                </action>
+
+                <!--Players controller -->
+
+                <action name="playerAddPage" class="com.nike.spp.controller.PlayerAddPage">
+                        <result name="success">Pages/playerAdd.jsp</result>
+                </action>
+                <action name="playerAdd" class="com.nike.spp.controller.PlayerAddAction" >
+                        <result name="success">Pages/playerAdd.jsp</result>
+                        <result name="input">Pages/playerAdd.jsp</result>
+                </action>
+        </package>
+</struts>

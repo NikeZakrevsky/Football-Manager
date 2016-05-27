@@ -1,4 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,13 +52,13 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-        			<form role="form" action="saveTeam.do" method="post">
-						<p><b>Название:</b><br>
-							<input type="text" name="name" size="40"></p>
-						<p><b>Тренер:</b><br>
-							<input type="text" name="coach" size="40"></p>
-						<input type="submit" value="Отправить">
-					</form>
+                    <s:form action="teamAdd" method="post">
+                        <p><b>Name:</b><br></p>
+                            <s:textfield name="team.name" label="Name" />
+                        <p><b>Coach:</b><br></p>
+                            <s:password name="team.coach" label="Coach" />
+                            <s:submit value="Send" />
+                    </s:form>
 				</div>
             </div>
         </div>
@@ -88,7 +89,7 @@
         interval: 5000 //changes the speed
     })
     </script>
-
+</div>
 </body>
 
 </html>

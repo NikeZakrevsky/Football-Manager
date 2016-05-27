@@ -1,6 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,35 +56,38 @@
 		<div class="row">
 			<div class="box">
 				<div class="col-lg-12">
-					<form role="form" action="savePlayer.do" method="post">
+					<s:form action="playerAdd" method="post">
 						<p>
-							<b>Имя:</b><br> <input type="text" name="name" size="40">
+							<b>Имя:</b><br> <s:textfield name="player.name" size="40"/>
 						</p>
 						<p>
-							<b>Номер:</b><br> <input type="text" name="number" size="40">
+							<b>Номер:</b><br> <s:textfield name="player.number" size="40"/>
 						</p>
 						<p>
-							<b>Рост:</b><br> <input type="text" name="hight" size="40">
+							<b>Рост:</b><br> <s:textfield name="player.hight" size="40"/>
 						</p>
 						<p>
-							<b>Вес:</b><br> <input type="text" size="40" name="weight">
+							<b>Вес:</b><br> <s:textfield size="40" name="player.weight"/>
 						</p>
 						<p>
-							<b>Команда:</b><br> 
-							<select name="teamName">
-								<c:forEach var="listValue" items="${lists}">
-									<option value="${listValue.name}">${listValue.name}</option>
+							<b>Команда:</b><br>
+							<select name="team">
+								<c:forEach var="team" items="${teams}">
+									<option value="${team.name}">${team.name}</option>
 								</c:forEach>
-							</select> 
-							<input type="submit" value="Отправить">
-					</form>
+							</select>
+
+						</p>
+						<input type="submit" value="Отправить">
+					</s:form>
 				</div>
 			</div>
 		</div>
 	</div>
 
 		<!-- /.container -->
-
+<s:iterator value="teams" var="team">
+	</s:iterator>
 		<footer>
 			<div class="container">
 				<div class="row">

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,19 +66,16 @@
 	                        			<i class="fa fa-key"></i>
 	                        		</div>
 	                            </div>
-	                            <div class="form-bottom">
-				                    <form role="form" action="signIn.do" method="post" class="login-form">
-				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-username">Username</label>
-				                        	<input type="text" name="login" placeholder="Username..." class="form-username form-control" id="form-username">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-				                        </div>
-				                        <button type="submit" class="btn">Sign in!</button>
-				                    </form>
-			                    </div>
+
+
+
+
+								<s:form action="signIn" method="post">
+									<s:textfield name="user.login" label="E-mail" />
+									<s:password name="user.password" label="Password" />
+									<s:submit value="Login" />
+								</s:form>
+
 		                    </div>
 		                
                         </div>
