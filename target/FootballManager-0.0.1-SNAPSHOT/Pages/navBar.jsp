@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a style="padding: 35px" href="index">Главная</a>
+                        <a style="padding: 35px" href="">Главная</a>
                     </li>
                     <li>
                         <a style="padding: 35px"href="teams">Команды</a>

@@ -4,52 +4,92 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-        <constant name="struts.devMode" value="true" />
+        <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
 
+        <package name="default" extends="struts-default">
 
-        <package name="default" extends="struts-default" namespace="/">
+                <interceptors>
+                        <interceptor name="authentication" class="com.nike.spp.interceptor.LoginInterceptor"/>
+                        <interceptor-stack name="authStackUser">
+                                <interceptor-ref name="defaultStack"/>
+                                <interceptor-ref name="authentication">
+                                        <param name="allowedRoles">user,admin</param>
+                                </interceptor-ref>
+                        </interceptor-stack>
 
+                        <interceptor-stack name="authStackAdmin">
+                                <interceptor-ref name="defaultStack"/>
+                                <interceptor-ref name="authentication">
+                                        <param name="disallowedRoles">user</param>
+                                </interceptor-ref>
+                        </interceptor-stack>
+                </interceptors>
                 <!--Users controller -->
 
                 <action name="">
                         <result>Pages/regLogPage.jsp</result>
                 </action>
 
-                <action name="signIn" class="com.nike.spp.controller.SignInAction" >
+                <action name="signIn" class="com.nike.spp.controller.LoginAction">
                         <result name="success">Pages/index.jsp</result>
+                        <result name="login">Pages/regLogPage.jsp</result>
                 </action>
 
                 <!--Teams controller -->
 
                 <action name="teams" class="com.nike.spp.controller.TeamListAction" >
+                        <interceptor-ref name="authStackUser"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/teams.jsp</result>
                 </action>
                 <action name="teamAdd" class="com.nike.spp.controller.AddTeamAction" >
+                        <interceptor-ref name="authStackUser"/>
                         <result name="success">Pages/teamAdd.jsp</result>
+                        <result name="login">Pages/regLogPage.jsp</result>
+                        <result name="input">Pages/teamAdd.jsp</result>
                 </action>
                 <action name="teamAddPage">
+                        <interceptor-ref name="authStackUser"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/teamAdd.jsp</result>
                 </action>
 
                 <!--Players controller -->
 
                 <action name="playerAddPage" class="com.nike.spp.controller.PlayerAddPage">
+                        <interceptor-ref name="authStackUser"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/playerAdd.jsp</result>
                 </action>
                 <action name="playerAdd" class="com.nike.spp.controller.PlayerAddAction" >
+                        <interceptor-ref name="authStackUser"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/playerAdd.jsp</result>
                         <result name="input">Pages/playerAdd.jsp</result>
                 </action>
 
                 <!--Matches controller -->
                 <action name="matches" class="com.nike.spp.controller.MatchListPage">
+                        <interceptor-ref name="authStackAdmin"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/matches.jsp</result>
                 </action>
                 <action name="matchAddPage" class="com.nike.spp.controller.MatchAddPage">
+                        <interceptor-ref name="authStackUser"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/matchAdd.jsp</result>
                 </action>
                 <action name="matchAdd" class="com.nike.spp.controller.MatchAddAction">
+                        <interceptor-ref name="authStackUser"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/matches.jsp</result>
+                </action>
+
+                <!--Stadium controller-->
+                <action name="stadiums" class="com.nike.spp.controller.StadiumListPage">
+                        <interceptor-ref name="authentication"/>
+                        <result name="login">Pages/regLogPage.jsp</result>
+                        <result name="success">Pages/stadiums.jsp</result>
                 </action>
 
         </package>

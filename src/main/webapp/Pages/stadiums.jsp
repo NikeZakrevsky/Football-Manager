@@ -1,6 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,27 +52,27 @@
 		</div>
 	</div>
 	<div class="container">
-		<c:forEach var="listValue" items="${lists}">
+		<s:iterator value="stadiums" var="stadium">
 			<div class="row">
 				<div class="box">
 					<div class="col-lg-12">
 						<hr>
-						<h2 class="intro-text text-center">${listValue.name}</h2>
+						<h2 class="intro-text text-center"><s:property value="#stadium.name"/></h2>
 						<hr>
 						<hr class="visible-xs">
 						<p>
-							<strong>Название:</strong> ${listValue.name}
+							<strong>Название:</strong> <s:property value="#stadium.name"/>
 						</p>
 						<p>
-							<strong>Город:</strong> ${listValue.town}
+							<strong>Город:</strong><s:property value="#stadium.town"/>
 						</p>
 						<p>
-							<strong>Вместительность:</strong> ${listValue.capacity}
+							<strong>Вместительность:</strong> <s:property value="#stadium.capacity"/>
 						</p>
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+		</s:iterator>
 	</div>
 	<footer>
 		<div class="container">

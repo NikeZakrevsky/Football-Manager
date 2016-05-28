@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     <title>Организация Футбольных Матчей</title>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,43 +26,44 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
 <body ng-app="">
-	<div ng-include="'Pages/navBar.jsp'"></div>
+<div ng-include="'Pages/navBar.jsp'"></div>
 
-    <div class="container">
+<div class="container">
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12 text-center">
-				    <hr class="tagline-divider">
-                    <h2 class="brand-before">
-                        Добавление Новой Команды
-                    </h2>
-                    <hr class="tagline-divider">
-                </div>
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12 text-center">
+                <hr class="tagline-divider">
+                <h2 class="brand-before">
+                    Добавление Новой Команды
+                </h2>
+                <hr class="tagline-divider">
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <s:form action="teamAdd" method="post">
-                        <p><b>Name:</b><br></p>
-                            <s:textfield name="team.name" label="Name" />
-                        <p><b>Coach:</b><br></p>
-                            <s:password name="team.coach" label="Coach" />
-                            <s:submit value="Send" />
-                    </s:form>
-				</div>
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <s:form action="teamAdd" method="post">
+                    <p style="color: red;"><b><s:property value="errorString"></s:property></b><br></p>
+                    <p><b>Name:</b><br></p>
+                    <s:textfield name="team.name" pattern="^[A-Za-z0-9 ]{3,15}$" label="Name" />
+                    <p><b>Coach:</b><br></p>
+                    <s:password name="team.coach" pattern="^[A-Za-z ]{3,30}$" label="Coach" />
+                    <s:submit value="Send" />
+                </s:form>
             </div>
         </div>
-		
+    </div>
+
 
 
     <!-- /.container -->
@@ -85,9 +86,9 @@
 
     <!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
     </script>
 </div>
 </body>
