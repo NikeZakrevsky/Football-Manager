@@ -1,7 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
 <div class="brand">Организация Футбольных Матчей</div>
-    <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko)</div>
+    <div class="address-bar">Yakhovsky Team(Yakhovsky, Zakrevsky, Moskalenko)|<a href="logout" >Logout</a><%=session.getAttribute("login").toString()%><br></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">

@@ -24,9 +24,55 @@
                                 </interceptor-ref>
                         </interceptor-stack>
                 </interceptors>
+
+                <action name="adminPage" class="com.nike.spp.controller.AdminPage">
+                        <result name="success">Pages/adminPage.jsp</result>
+                </action>
+
+                <action name="addUser" class="com.nike.spp.controller.LoginAction" method="addUser">
+                        <result>Pages/index.jsp</result>
+                </action>
+
+                <action name="logout" class="com.nike.spp.controller.LoginAction" method="logout">
+                        <result name="success" type="redirectAction">login</result>
+                </action>
+
+                <action name="deletePlayer" method="deletePlayer" class="com.nike.spp.controller.AdminPage">
+                        <result name="success" type="redirectAction">adminPage</result>
+                </action>
+
+                <action name="index">
+                        <result>Pages/index.jsp</result>
+                </action>
+
+                <action name="addUser" method="addUser" class="com.nike.spp.controller.AdminPage">
+                        <result name="success" type="redirectAction">adminPage</result>
+                </action>
+
+                <action name="editUser" method="editUser" class="com.nike.spp.controller.AdminPage">
+                        <result name="success">Pages/adminPage.jsp</result>
+                </action>
+
+                <action name="editStadium" method="editStadium" class="com.nike.spp.controller.AdminPage">
+                        <result name="success">Pages/adminPage.jsp</result>
+                </action>
+
+                <action name="deleteStadium" method="deleteStadium" class="com.nike.spp.controller.AdminPage">
+                        <result name="success" type="redirectAction">adminPage</result>
+                </action>
+
+                <action name="deleteUser" method="deleteUser" class="com.nike.spp.controller.AdminPage">
+                        <result name="success" type="redirectAction">adminPage</result>
+                </action>
+
+                <action name="addStadium" method="addStadium" class="com.nike.spp.controller.AdminPage">
+                        <result name="success" type="redirectAction">adminPage</result>
+                </action>
+
+
                 <!--Users controller -->
 
-                <action name="">
+                <action name="login">
                         <result>Pages/regLogPage.jsp</result>
                 </action>
 
@@ -38,18 +84,15 @@
                 <!--Teams controller -->
 
                 <action name="teams" class="com.nike.spp.controller.TeamListAction" >
-                        <interceptor-ref name="authStackUser"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/teams.jsp</result>
                 </action>
                 <action name="teamAdd" class="com.nike.spp.controller.AddTeamAction" >
-                        <interceptor-ref name="authStackUser"/>
                         <result name="success">Pages/teamAdd.jsp</result>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="input">Pages/teamAdd.jsp</result>
                 </action>
                 <action name="teamAddPage">
-                        <interceptor-ref name="authStackUser"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/teamAdd.jsp</result>
                 </action>
@@ -57,12 +100,10 @@
                 <!--Players controller -->
 
                 <action name="playerAddPage" class="com.nike.spp.controller.PlayerAddPage">
-                        <interceptor-ref name="authStackUser"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/playerAdd.jsp</result>
                 </action>
                 <action name="playerAdd" class="com.nike.spp.controller.PlayerAddAction" >
-                        <interceptor-ref name="authStackUser"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/playerAdd.jsp</result>
                         <result name="input">Pages/playerAdd.jsp</result>
@@ -70,24 +111,20 @@
 
                 <!--Matches controller -->
                 <action name="matches" class="com.nike.spp.controller.MatchListPage">
-                        <interceptor-ref name="authStackAdmin"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/matches.jsp</result>
                 </action>
                 <action name="matchAddPage" class="com.nike.spp.controller.MatchAddPage">
-                        <interceptor-ref name="authStackUser"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/matchAdd.jsp</result>
                 </action>
                 <action name="matchAdd" class="com.nike.spp.controller.MatchAddAction">
-                        <interceptor-ref name="authStackUser"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/matches.jsp</result>
                 </action>
 
                 <!--Stadium controller-->
                 <action name="stadiums" class="com.nike.spp.controller.StadiumListPage">
-                        <interceptor-ref name="authentication"/>
                         <result name="login">Pages/regLogPage.jsp</result>
                         <result name="success">Pages/stadiums.jsp</result>
                 </action>

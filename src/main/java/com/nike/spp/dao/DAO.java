@@ -42,4 +42,14 @@ public interface DAO {
 	public void addStadium(Stadium stadium);
 
 	public void removeUser(int id);
+
+	public List<Player> getPlayers();
+
+	public void removePlayer(int id);
+
+	public User getUserByID(int id);
+
+	public Stadium getStadiumByID(int id);
+
+	public void addUser(User user, String role);
 }

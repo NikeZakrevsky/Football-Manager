@@ -118,6 +118,22 @@ public class DAOImpl implements DAO {
 		session.getTransaction().commit();
 	}
 
+	public void addUser(User user, String role) {
+		System.out.println(user.getId());
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		List<Role> usersList = (List<Role>) session.createQuery("from Role").list();
+		for (Role role2 : usersList) {
+			if (role2.getName().equals(role)) {
+				currentUser = user;
+				role2.getUsers().add(user);
+				user.setRole(role2);
+				session.saveOrUpdate(user);
+				session.getTransaction().commit();
+			}
+		}
+	}
+
 	public void addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -174,7 +190,7 @@ public class DAOImpl implements DAO {
 	public void addStadium(Stadium stadium) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.save(stadium);
+		session.saveOrUpdate(stadium);
 		session.getTransaction().commit();
 	}
 
@@ -186,5 +202,50 @@ public class DAOImpl implements DAO {
 		if(user != null)
 			session.delete(user);
 		session.getTransaction().commit();
+	}
+
+	@Override
+	public List<Player> getPlayers() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		List<Player> players = (List<Player>) session.createQuery("from Player").list();
+		session.getTransaction().commit();
+		return players;
+	}
+
+	@Override
+	public void removePlayer(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Player player  = (Player)session.load(Player.class,new Integer(id));
+		session.delete(player);
+		session.getTransaction().commit();
+	}
+
+	@Override
+	public User getUserByID(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		User user  = (User)session.load(User.class,new Integer(id));
+		List<User> usersList = (List<User>) session.createQuery("from User").list();
+		for(User user1 : usersList) {
+			if(user1.getId() == id) {
+				System.out.println("kjh");
+				return user1;
+			}
+		}
+		session.getTransaction().commit();
+		return user;
+	}
+
+	@Override
+	public Stadium getStadiumByID(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Stadium stadium  = (Stadium)session.load(Stadium.class,new Integer(id));
+		System.out.println(id);
+		System.out.println(stadium);
+		session.getTransaction().commit();
+		return stadium;
 	}
 }

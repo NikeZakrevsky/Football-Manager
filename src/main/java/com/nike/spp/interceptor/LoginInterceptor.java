@@ -29,9 +29,9 @@ public class LoginInterceptor extends AbstractInterceptor {
     }
 
     public boolean isAllowed(HttpServletRequest request) {
-        System.out.println(allowedRoles);
         HttpSession session = request.getSession();
         String userRole = (String) session.getAttribute("role");
+        System.out.println(userRole);
         if(session.getAttribute("login") != null) {
             String username = (String) session.getAttribute("login");
             List<User> users = dao.getUserList();

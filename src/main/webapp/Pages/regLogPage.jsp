@@ -36,23 +36,13 @@
 
 <!-- Top content -->
 <div class="top-content">
-
     <div class="inner-bg">
         <div class="container">
-
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1><strong>Bootstrap</strong> Login &amp; Register Forms</h1>
-                    <div class="description">
-                        <p>
-                            This is a free responsive <strong>"login and register forms"</strong> template made with Bootstrap.
-                            Download it on <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>,
-                            customize and use it as you like!
-                        </p>
-                    </div>
+                    <h1>Login &amp; Register</h1>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-5">
 
@@ -66,21 +56,22 @@
                                 <i class="fa fa-key"></i>
                             </div>
                         </div>
-
-
-
-
-                        <s:form action="signIn" method="post">
-                            <p style="color: red;"><b><s:property value="errorString"></s:property></b><br></p>
-                            <s:textfield name="login" label="Login" />
-                            <s:password name="password" label="Password" />
-                            <s:submit value="Login" />
-                        </s:form>
-
+                        <div class="form-bottom">
+                            <s:form role="form" class="login-form" action="signIn" method="post">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-username">Username</label>
+                                    <input type="text" class="form-username form-control" id="form-username" placeholder="Username..." name="login"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="password" name="password"placeholder="Password..."
+                                    class="form-password form-control" id="form-password"/>
+                                </div>
+                                <button type="submit" class="btn">Sign in!</button>
+                            </s:form>
+                        </div>
                     </div>
-
                 </div>
-
                 <div class="col-sm-1 middle-border"></div>
                 <div class="col-sm-1"></div>
 
@@ -97,14 +88,14 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="saveUser.do" method="post" class="registration-form">
+                            <form role="form" action="addUser" method="post" class="registration-form">
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-first-name">First name</label>
-                                    <input type="text" name="login" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+                                    <label class="sr-only" for="form-first-name">Login</label>
+                                    <input type="text" name="login" label="Login" placeholder="Username..." class="form-first-name form-control" id="form-first-name"/>
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-last-name">Last name</label>
-                                    <input type="text" name="password" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                                    <label class="sr-only" for="form-last-name">Password</label>
+                                    <input type="text" name="password" placeholder="Password..." class="form-last-name form-control" id="form-last-name"/>
                                 </div>
                                 <button type="submit" class="btn">Sign me up!</button>
                             </form>
@@ -126,8 +117,6 @@
 
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="footer-border"></div>
-                <p>Made by Anli Zaimi at <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>
-                    having a lot of fun. <i class="fa fa-smile-o"></i></p>
             </div>
 
         </div>

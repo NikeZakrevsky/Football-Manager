@@ -61,16 +61,16 @@
 						<s:property value="errorString"></s:property>
 					</p>
 					<p>
-						<b>Имя:</b><br> <s:textfield name="player.name" pattern="^[A-Za-z]{3,30}$" size="40"/>
+						Имя:<input name="player.name" pattern="^[A-Za-z]{3,30}$" size="40"/>
 					</p>
 					<p>
-						<b>Номер:</b><br> <s:textfield name="player.number" pattern="^[0-9]{1,2}$" size="40"/>
+						Номер:<input name="player.number" pattern="^[0-9]{1,2}$" size="40"/>
 					</p>
 					<p>
-						<b>Рост:</b><br> <s:textfield name="player.hight" pattern="^[0-9]{3}$" size="40"/>
+						Рост:<input name="player.hight" pattern="^[0-9]{3}$" size="40"/>
 					</p>
 					<p>
-						<b>Вес:</b><br> <s:textfield size="40" pattern="^[0-9]{2,3}$" name="player.weight"/>
+						Вес:<input size="40" pattern="^[0-9]{2,3}$" name="player.weight"/>
 					</p>
 					<p>
 						<b>Команда:</b><br>
